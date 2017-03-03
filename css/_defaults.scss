@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Alignment
+   ========================================================================== */
+
+.loop-container-align-left {
+	text-align: left;
+}
+
+.loop-container-align-right {
+	text-align: right;
+}
+
+.loop-container-align-center {
+	text-align: center;
+}
+
+/* ==========================================================================
+   Remove default spacing
+   ========================================================================== */
+
+.loop-container {
+	padding-top: 35px;
+	margin-bottom: 35px;
+
+	.entry {
+		margin: 0;
+		padding: 0;
+		padding: 10px;
+		background-color: #efefef;
+	}
+}
+
+.custom-loop-container {
+	.entry {
+		margin: 0;
+		padding: 0;
+		padding: 10px;
+		background-color: #efefef;
+	}
+}
+
+
+/* ==========================================================================
+   Columns
+   ========================================================================== */
+
+.loop-item-inner {
+	// silence is golden
+}
+
+.loop-columns-one-line,
+.loop-columns-auto,
+.loop-columns-1,
+.loop-columns-2,
+.loop-columns-3,
+.loop-columns-4,
+.loop-columns-5,
+.loop-columns-6 {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;
+	margin-left: -5px;
+	margin-right: -5px;
+
+	.entry {
+		flex: 0 1 auto;
+		margin: 0 5px 10px;
+	}
+}
+
+.loop-columns-one-line {
+	flex-flow: row nowrap;
+	justify-content: space-around;
+
+	.entry {
+		width: 100%;
+	}
+}
+
+.loop-columns-auto {
+	.entry {
+
+	}
+}
+
+.loop-columns-1 {
+	.entry {
+		width: 100%;
+	}
+}
+
+.loop-columns-2 {
+	.entry {
+		width: calc( 50% - 10px );
+	}
+}
+
+.loop-columns-3 {
+	.entry {
+		width: calc( 33.3% - 10px );
+	}
+}
+
+.loop-columns-4 {
+	.entry {
+		width: calc( 25% - 10px );
+	}
+}
+
+.loop-columns-5 {
+	.entry {
+		width: calc( 20% - 10px );
+	}
+}
+
+.loop-columns-6 {
+	.entry {
+		width: calc( 16.6% - 10px );
+	}
+}
