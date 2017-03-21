@@ -76,11 +76,11 @@ function gsq_add_shortcode( $atts ) {
 	do_action( 'before_loop_layout_' . $atts['layout'], $args );
 
 	//* If this is a normal loop, and we don't need to deal with Posts2Posts, do a query
-	if ( empty( $args['connected_type'] ) )
+	if ( empty( $atts['connected_type'] ) )
 		$gsq_shortcode_query = new WP_Query( $args );
 
 	//* If this is not a normal loop and we need to deal with Posts2Posts, do that query
-	if ( !empty( $args['connected_type'] ) ) {
+	if ( !empty( $atts['connected_type'] ) ) {
 		$gsq_shortcode_query = new WP_Query( array(
 		  'connected_type' => $atts['connected_type'],
 		  'connected_items' => get_queried_object(),
