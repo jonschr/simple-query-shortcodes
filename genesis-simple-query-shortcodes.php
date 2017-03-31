@@ -40,7 +40,7 @@ function gsq_add_shortcode( $atts ) {
 
 	wp_enqueue_style( 'gsq-styles' );
 
-	$atts = shortcode_atts( array(
+	$args = shortcode_atts( array(
 		'category' => null,
 		'post_type' => 'post',
 		'posts_per_page' => get_option( 'posts_per_page' ),
@@ -59,15 +59,23 @@ function gsq_add_shortcode( $atts ) {
 		'connected_type' => null,
 	), $atts );
 
-	$args = array();
+	// $args = array();
 
 	//* The basic things we need to output something
-	$default_args = array(
-		'post_type' => $atts['post_type'],
-		'posts_per_page' => $atts['posts_per_page'],
-	);
+	// $args = array(
+	// 	'post_type' => $atts['post_type'],
+	// 	'posts_per_page' => $atts['posts_per_page'],
+	// );
 
-	$args = wp_parse_args( $args, $default_args );
+	// //* If we've selected a specific post or posts
+	// if ( $atts['p'] ) {
+	// 	$additional_args = array(
+	// 		'p' => $atts[p],
+	// 	);
+	// }
+
+
+	// $args = wp_parse_args( $args, $default_args );
 
 	//* Start listening for output
 	ob_start();
