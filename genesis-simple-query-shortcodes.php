@@ -17,6 +17,9 @@ $theme = wp_get_theme(); // gets the current theme
 if ( 'genesis' != $theme['Template'] )
     return;
 
+if ( is_admin() )
+	return;
+
 //* Enqueue Scripts and Styles
 add_action( 'wp_enqueue_scripts', 'gsq_enqueue_scripts_styles' );
 function gsq_enqueue_scripts_styles() {
