@@ -1,3 +1,37 @@
+$mobile-width-section: 767px;
+$tablet-width-section: 768px;
+$desktop-width-section: 1200px;
+
+@mixin mobile {
+	 @media (max-width: #{$mobile-width-section}){
+		@content;
+	}
+}
+
+@mixin tablet {
+	 @media (min-width: #{$tablet-width-section}) and (max-width: #{$desktop-width-section - 1px}){
+		@content;
+	}
+}
+
+@mixin mobileandtablet {
+	 @media (max-width: #{$desktop-width-section - 1px}){
+		@content;
+	}
+}
+
+@mixin desktop {
+	 @media (min-width: #{$desktop-width-section}){
+		@content;
+	}
+}
+
+@mixin notmobile {
+	 @media (min-width: #{$tablet-width-section}){
+		@content;
+	}
+}
+
 /* ==========================================================================
    Alignment
    ========================================================================== */
@@ -101,29 +135,61 @@
 .loop-columns-2 {
 	.entry {
 		width: calc( 50% - 10px );
+
+		@include mobile {
+			width: calc( 100% - 10px );
+		}
 	}
 }
 
 .loop-columns-3 {
 	.entry {
 		width: calc( 33.3% - 10px );
+
+		@include mobile {
+			width: calc( 100% - 10px );
+		}
 	}
 }
 
 .loop-columns-4 {
 	.entry {
 		width: calc( 25% - 10px );
+
+		@include tablet {
+			width: calc( 50% - 10px );
+		}
+
+		@include mobile {
+			width: calc( 50% - 10px );
+		}
 	}
 }
 
 .loop-columns-5 {
 	.entry {
 		width: calc( 20% - 10px );
+
+		@include tablet {
+			width: calc( 33.3% - 10px );
+		}
+
+		@include mobile {
+			width: calc( 50% - 10px );
+		}
 	}
 }
 
 .loop-columns-6 {
 	.entry {
 		width: calc( 16.6% - 10px );
+
+		@include tablet {
+			width: calc( 33.3% - 10px );
+		}
+
+		@include mobile {
+			width: calc( 50% - 10px );
+		}
 	}
 }
