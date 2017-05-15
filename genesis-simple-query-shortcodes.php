@@ -46,11 +46,12 @@ function gsq_add_shortcode( $atts ) {
 	$args = shortcode_atts( array(
 		'category' => null,
 		'post_type' => 'post',
-		'posts_per_page' => get_option( 'posts_per_page' ),
+		'posts_per_page' => '-1',
 		'p' => null,
 		'taxonomy' => null,
-		'field' => null,
+		'field' => 'slug',
 		'terms' => null,
+		'operator' => 'IN',
 		'orderby' => null,
 		'order' => null,
 		'offset' => null,
@@ -72,6 +73,7 @@ function gsq_add_shortcode( $atts ) {
 					'taxonomy' => $args['taxonomy'],
 					'field'    => $args['field'],
 					'terms'    => $args['terms'],
+					'operator' => $args['operator']
 				),
 			),
 		);
@@ -79,6 +81,7 @@ function gsq_add_shortcode( $atts ) {
 		$args['taxonomy'] = null;
 		$args['field'] = null;
 		$args['terms'] = null;
+		$args['operator'] = null;
 
 		$args = wp_parse_args( $args, $tax_args );
 	}
