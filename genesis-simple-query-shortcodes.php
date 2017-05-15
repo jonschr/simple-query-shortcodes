@@ -50,6 +50,7 @@ function gsq_add_shortcode( $atts ) {
 		'p' => null,
 		'taxonomy' => null,
 		'field' => null,
+		'terms' => null,
 		'orderby' => null,
 		'order' => null,
 		'offset' => null,
@@ -62,7 +63,25 @@ function gsq_add_shortcode( $atts ) {
 		'connected_type' => null,
 	), $atts );
 
-	// $args = array();
+	//* Taxonomy queries (we're grabbing the relevant info, merging it properly into the array, then removing that info from the array after use to avoid issues)
+	if ( $args['taxonomy'] ) {
+		
+		$tax_args = array(
+			'tax_query' => array(
+				array(
+					'taxonomy' => $args['taxonomy'],
+					'field'    => $args['field'],
+					'terms'    => $args['terms'],
+				),
+			),
+		);
+		
+		$args['taxonomy'] = null;
+		$args['field'] = null;
+		$args['terms'] = null;
+
+		$args = wp_parse_args( $args, $tax_args );
+	}
 
 	//* The basic things we need to output something
 	// $args = array(
