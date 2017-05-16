@@ -163,9 +163,12 @@ function gsq_add_shortcode( $atts ) {
 
 	endif; // End loop.
 
+	wp_reset_query();
+
 	//* Hook in after a specific layout
 	do_action( 'after_loop_layout_' . $atts['layout'], $args );
 
 	//* Output everything we've done up to now
 	return ob_get_clean();
+
 }
