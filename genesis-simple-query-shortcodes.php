@@ -45,7 +45,7 @@ function gsq_add_shortcode( $atts ) {
 
 	$args = shortcode_atts( array(
 		'category' => null,
-		'post_type' => 'post',
+		'post_type' => null,
 		'posts_per_page' => '-1',
 		'p' => null,
 		'taxonomy' => null,
@@ -65,10 +65,10 @@ function gsq_add_shortcode( $atts ) {
 	), $atts );
 
 	//* If there's any term or taxonomy, or a category with a CPT in our shortcode, we'll modify the query appropriately
-	if ( $args['taxonomy'] || $args['terms'] || ( $args['category'] && $args['post_type'] != 'post' ) ) {
+	if ( $args['taxonomy'] || $args['terms'] || ( $args['category'] && !$args['post_type'] ) ) {
 
 		//* If there's a category being set instead of a term on a CPT, let's make it a term instead (this is a common error)
-		if ( $args['category'] && $args['post_type'] != 'post' ) {
+		if ( $args['category'] && !$args['post_type'] ) {
 			$args['terms'] = $args['category'];
 			
 			//* Need to reset the category to null so that it's not actually added to the query (because it will never find a post in both the 'category' AND the 'term' )
@@ -132,7 +132,7 @@ function gsq_add_shortcode( $atts ) {
     if ( $gsq_shortcode_query->have_posts() ) :
 
 		//* If there's no layout being set, but there's a CPT, let's automatically use the name of the post type as the layout
-    	if ( !$atts['layout'] && $atts['post_type'] != 'post' )
+    	if ( !$atts['layout'] && !$atts['post_type'] )
     		$atts['layout'] = $atts['post_type'];
 
 		//* Admin notice if there's no layout defined
