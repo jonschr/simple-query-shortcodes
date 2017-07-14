@@ -45,8 +45,7 @@ function gsq_add_shortcode( $atts ) {
 
 	$args = shortcode_atts( array(
 		'category' => null,
-		'category_name' => null,
-		'post_type' => 'post',
+		'post_type' => null,
 		'posts_per_page' => '-1',
 		'p' => null,
 		'taxonomy' => null,
@@ -65,9 +64,27 @@ function gsq_add_shortcode( $atts ) {
 		'connected_type' => null,
 	), $atts );
 
-	//* Taxonomy queries (we're grabbing the relevant info, merging it properly into the array, then removing that info from the array after use to avoid issues)
-	if ( $args['taxonomy'] ) {
+	//* If there's any term or taxonomy, or a category with a CPT in our shortcode, we'll modify the query appropriately
+	if ( $args['taxonomy'] || $args['terms'] || ( $args['category'] && !$args['post_type'] ) ) {
+
+		//* If there's a category being set instead of a term on a CPT, let's make it a term instead (this is a common error)
+		if ( $args['category'] && !$args['post_type'] ) {
+			$args['terms'] = $args['category'];
+			
+			//* Need to reset the category to null so that it's not actually added to the query (because it will never find a post in both the 'category' AND the 'term' )
+			$args['category'] = null;
+		}
+
+		//* If a term is provided, but no taxonomy, let's get it automatically if there's only one tax attached to this post type
+		if ( $args['terms'] && !$args['taxonomy'] ) {
+			$taxonomies = get_object_taxonomies( $args['post_type'], 'objects');
+
+			foreach ( $taxonomies as $taxonomy ) {
+				$args['taxonomy'] = $taxonomy->name;
+			}
+		}
 		
+		//* Set up the taxonomy query
 		$tax_args = array(
 			'tax_query' => array(
 				array(
@@ -79,6 +96,7 @@ function gsq_add_shortcode( $atts ) {
 			),
 		);
 		
+		//* So that they don't mess anything up down the line, reset the values of the things we've used
 		$args['taxonomy'] = null;
 		$args['field'] = null;
 		$args['terms'] = null;
@@ -87,24 +105,13 @@ function gsq_add_shortcode( $atts ) {
 		$args = wp_parse_args( $args, $tax_args );
 	}
 
-	//* The basic things we need to output something
-	// $args = array(
-	// 	'post_type' => $atts['post_type'],
-	// 	'posts_per_page' => $atts['posts_per_page'],
-	// );
-
-	// //* If we've selected a specific post or posts
-	// if ( $atts['p'] ) {
-	// 	$additional_args = array(
-	// 		'p' => $atts[p],
-	// 	);
-	// }
-
-
-	// $args = wp_parse_args( $args, $default_args );
-
 	//* Start listening for output
 	ob_start();
+
+	//* For testing, echo the arguments being used in the query
+	// echo '<pre>';
+	// print_r( $args );
+	// echo '</pre>';
 	
 	//* Hook in before a specific layout
 	do_action( 'before_loop_layout_' . $atts['layout'], $args );
@@ -123,6 +130,10 @@ function gsq_add_shortcode( $atts ) {
 	}
 
     if ( $gsq_shortcode_query->have_posts() ) :
+
+		//* If there's no layout being set, but there's a CPT, let's automatically use the name of the post type as the layout
+    	if ( !$atts['layout'] && !$atts['post_type'] )
+    		$atts['layout'] = $atts['post_type'];
 
 		//* Admin notice if there's no layout defined
 		if ( !has_action( 'add_loop_layout_' . $atts['layout'] ) && current_user_can( 'edit_posts' ) ) {
