@@ -45,6 +45,7 @@ function gsq_add_shortcode( $atts ) {
 
 	$args = shortcode_atts( array(
 		'category' => null,
+		'category_name' => null,
 		'post_type' => 'post',
 		'posts_per_page' => '-1',
 		'p' => null,
