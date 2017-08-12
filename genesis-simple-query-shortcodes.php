@@ -44,7 +44,9 @@ function gsq_add_shortcode( $atts ) {
 	wp_enqueue_style( 'gsq-styles' );
 
 	$args = shortcode_atts( array(
+		'debug' => null,
 		'category' => null,
+		'category_name' => null,
 		'post_type' => null,
 		'posts_per_page' => '-1',
 		'p' => null,
@@ -108,17 +110,16 @@ function gsq_add_shortcode( $atts ) {
 	//* Start listening for output
 	ob_start();
 
-	//* For testing, echo the arguments being used in the query
-	// echo '<pre>';
-	// print_r( $args );
-	// echo '</pre>';
+	//* For testing, echo the arguments being used in the query if needed
+	gsq_debug( $args );
 	
 	//* Hook in before a specific layout
 	do_action( 'before_loop_layout_' . $atts['layout'], $args );
 
 	//* If this is a normal loop, and we don't need to deal with Posts2Posts, do a query
-	if ( empty( $atts['connected_type'] ) )
+	if ( empty( $atts['connected_type'] ) ) {
 		$gsq_shortcode_query = new WP_Query( $args );
+	}
 
 	//* If this is not a normal loop and we need to deal with Posts2Posts, do that query
 	if ( !empty( $atts['connected_type'] ) ) {
@@ -183,4 +184,14 @@ function gsq_add_shortcode( $atts ) {
 	//* Output everything we've done up to now
 	return ob_get_clean();
 
+}
+
+function gsq_debug( $args ) {
+	if ( $args['debug'] ) {
+
+		echo '<h2 style="text-align: left;">ARGUMENTS BEING PASSED:</h2>';
+		echo '<pre style="font-size: 14px; text-align: left;">';
+		var_dump( $args );
+		echo '</pre>';	
+	}
 }
