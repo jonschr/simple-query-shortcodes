@@ -50,6 +50,7 @@ function gsq_add_shortcode( $atts ) {
 		'post_type' => null,
 		'posts_per_page' => '-1',
 		'p' => null,
+		'name' => null,
 		'taxonomy' => null,
 		'field' => 'slug',
 		'terms' => null,
