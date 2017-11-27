@@ -48,6 +48,7 @@ function gsq_add_shortcode( $atts ) {
 		'category' => null,
 		'category_name' => null,
 		'post_type' => null,
+		'post__in' => null,
 		'posts_per_page' => '-1',
 		'p' => null,
 		'name' => null,
