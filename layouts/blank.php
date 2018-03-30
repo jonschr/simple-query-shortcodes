@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'add_loop_layout_blank', 'gsq_layout_blank', $post_id );
+add_action( 'add_loop_layout_blank', 'gsq_layout_blank', 10, 1 );
 function gsq_layout_blank( $post_id ) {
 
 	$permalink = get_the_permalink( $post_id ); 

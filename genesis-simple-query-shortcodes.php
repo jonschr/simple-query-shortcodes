@@ -153,15 +153,18 @@ function gsq_add_shortcode( $atts ) {
 
 			do_action( 'gsq_loop_before_entry' );
 
+			global $post;
+			$post_id = get_the_ID();
+
 			printf( '<article %s>', genesis_attr( 'entry' ) );
 
 				echo '<div class="loop-item-inner">';
-				
-				  	$post_id = get_the_ID();
 
 				  	//* Hook in to add a specific layout (this is the markup for each post)
-					do_action( 'add_loop_layout_' . $atts['layout'], $post_id );
+				  	if ( has_action( 'add_loop_layout_' . $atts['layout'] ) )
+						do_action( 'add_loop_layout_' . $atts['layout'], $post_id );
 
+					//* Fallback for if there's no layout defined
 					if ( !has_action( 'add_loop_layout_' . $atts['layout'] ) )
 						do_action( 'add_loop_layout_blank', $post_id );						
 

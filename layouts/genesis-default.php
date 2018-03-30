@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'add_loop_layout_genesis', 'gsq_layout_genesis', $post_id );
+add_action( 'add_loop_layout_genesis', 'gsq_layout_genesis', 10, 1 );
 function gsq_layout_genesis( $post_id ) {
 
 	global $post;
