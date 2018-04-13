@@ -135,6 +135,22 @@ function gsq_add_shortcode( $atts ) {
 	//* For testing, show the query
 	gsq_debug_query( $args, $gsq_shortcode_query );
 
+	//* Add the post-count-n class
+	$post_count = $gsq_shortcode_query->post_count;
+	
+	if ( !empty( $atts['class'] ) )
+		$atts['class'] = $atts['class'] . ' ' . 'post-count-' . $post_count;
+
+	if ( empty( $atts['class'] ) )
+		$atts['class'] = 'post-count-' . $post_count;
+
+	//* Add a post-count-x class for even or odd
+	if ( $post_count % 2 == 0 ) {
+		$atts['class'] = $atts['class'] . ' ' . 'post-count-even';
+	} else {
+		$atts['class'] = $atts['class'] . ' ' . 'post-count-odd';
+	}
+
     if ( $gsq_shortcode_query->have_posts() ) :
 
 		//* If there's no layout being set, but there's a CPT, let's automatically use the name of the post type as the layout
