@@ -12,10 +12,10 @@
 
 defined( 'ABSPATH' ) or exit;
 
-//* If we don't have Genesis running, let's bail out right there
+//* If we don't have Genesis running, let's not do anything related to that
 $theme = wp_get_theme(); // gets the current theme
-if ( 'genesis' != $theme['Template'] )
-    return;
+// if ( 'genesis' != $theme['Template'] )
+//     return;
 
 if ( is_admin() )
 	return;
@@ -36,7 +36,9 @@ function gsq_enqueue_scripts_styles() {
 include 'common/basic-loop-hooks.php';
 
 include 'layouts/blank.php';
-include 'layouts/genesis-default.php';
+
+if ( 'genesis' == $theme['Template'] )
+	include 'layouts/genesis-default.php';
 
 add_shortcode( 'loop', 'gsq_add_shortcode' );
 function gsq_add_shortcode( $atts ) {
@@ -172,7 +174,8 @@ function gsq_add_shortcode( $atts ) {
 			global $post;
 			$post_id = get_the_ID();
 
-			printf( '<article %s>', genesis_attr( 'entry' ) );
+			$classes = implode( ' ', get_post_class('entry') );
+			printf( '<article class="%s">', $classes );
 
 				echo '<div class="loop-item-inner">';
 
