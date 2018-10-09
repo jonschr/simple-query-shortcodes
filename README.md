@@ -10,7 +10,7 @@ This loop plugin has one piece of functionality I've found to be missing in most
 	* [Pull in a specific post](#pull-in-a-specific-post)
 	* [Custom post types](#custom-post-types)
 	* [Custom taxonomies](#custom-taxonomies)
-* [Parameters](#parameters)
+* [View all parameters](#parameters)
 
 ## Registering a layout
 
