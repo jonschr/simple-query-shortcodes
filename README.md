@@ -18,6 +18,8 @@ This set of instructions are for theme and plugin authors. If you'd like to add 
 
 (The first one is commented out because for simple use cases it won't be needed). Usually I add all of the styles in the theme or plugin that's registering the layout to avoid loading unnecessary files.
 
+**Please note: correct usage would be to register the script elsewhere and to use it here, NOT to simply enqueue it directly**
+
 ```php
 //* Output THELAYOUTNAME before
 // add_action( 'before_loop_layout_THELAYOUTNAME', 'rb_THELAYOUTNAME_before' );
