@@ -6,6 +6,7 @@ This loop plugin has one piece of functionality I've found to be missing in most
 
 * [Registering a layout](#registering-a-layout)
 * [Sample shortcodes](#sample-shortcodes)
+* [Parameters](#parameters)
 
 ## Registering a layout
 
@@ -59,6 +60,19 @@ For example, these should pull in exactly the same thing:
 [loop taxonomy="categories" terms="uncategorized"]
 ```
 
+To pull in a specific number of recent posts, something like this will work:
+
+```
+[loop posts_per_page="9"]
+```
+
+### Pull in a specific post
+This pulls in the post with a specific ID.
+
+```
+[loop p="123"]
+```
+
 ### Custom post types
 
 You can pull in custom content types as well. If there's a custom content type, the plugin will detect whether a layout has been registered with the same name, and will load that as a default if nothing else has been manually set.
@@ -67,6 +81,14 @@ This will pull in a list of testimonials, using the "testimonials" layout if one
 
 ```
 [loop post_type="testimonials"]
+```
+
+### Custom taxonomies
+
+This can be used with posts *or* custom post types, but is only commonly used with CPTs. If there's only one custom taxonomy registered, then you can simply leave out the taxonomy, and the plugin will detect it.
+
+```
+[loop post_type="testimonials" taxonomy="testimonial-categories" terms="featured"]
 ```
 
 ## Parameters
