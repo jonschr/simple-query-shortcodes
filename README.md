@@ -51,9 +51,12 @@ The most basic use case is simply the shortcode with no parameters. This will de
 
 There are several ways to add categories into the loop. The plugin should recognize these and set semi-intelligent defaults to try to account for common errors in writing the shortcodes.
 
+For example, these should pull in exactly the same thing:
+
 ```
 [loop category="uncategorized" ]
 [loop terms="uncategorized"]
+[loop taxonomy="categories" terms="uncategorized"]
 ```
 
 ### Custom post types
@@ -64,5 +67,34 @@ This will pull in a list of testimonials, using the "testimonials" layout if one
 
 ```
 [loop post_type="testimonials"]
+```
+
+## Parameters
+
+It's probably useful to see a complete list of parameters that can be used. Here's that list, with their associated defaults, and they correspond to the commonly-used ones in [the WordPress documentation](https://codex.wordpress.org/Class_Reference/WP_Query), plus a few extras:
+
+```php
+'debug' 		=> null,
+'category' 		=> null,
+'category_name' 	=> null,
+'post_type' 		=> 'post',
+'post__in' 		=> null,
+'posts_per_page' 	=> '-1',
+'p' 			=> null,
+'name' 			=> null,
+'taxonomy' 		=> null,
+'field' 		=> 'slug',
+'terms' 		=> null,
+'operator' 		=> 'IN',
+'orderby' 		=> null,
+'order' 		=> null,
+'offset' 		=> null,
+'columns' 		=> 1,
+'layout' 		=> null,
+'align' 		=> 'left',
+'extras' 		=> null,
+'class' 		=> null,
+'style' 		=> null,
+'connected_type' 	=> null,
 ```
 
