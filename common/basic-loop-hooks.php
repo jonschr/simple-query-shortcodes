@@ -1,16 +1,16 @@
 <?php
 
 add_action( 'gsq_loop_before_while', 'gsq_loop_do_before_while', 10, 1 );
-function gsq_loop_do_before_while( $atts ) {
+function gsq_loop_do_before_while( $args ) {
 
-	$layout = isset($atts['layout'] ) ? $atts['layout'] : null;
-	$style = isset($atts['style'] ) ? $atts['style'] : null;
-	$columns = isset($atts['columns'] ) ? $atts['columns'] : null;
-	$align = isset($atts['align'] ) ? $atts['align'] : null;
-	$class = isset($atts['class'] ) ? $atts['class'] : null;
+	$layout = isset($args['layout'] ) ? $args['layout'] : null;
+	$style = isset($args['style'] ) ? $args['style'] : null;
+	$columns = isset($args['columns'] ) ? $args['columns'] : null;
+	$align = isset($args['align'] ) ? $args['align'] : null;
+	$class = isset($args['class'] ) ? $args['class'] : null;
 
-	if ( !has_action( 'add_loop_layout_' . $atts['layout'] ) )
-		$atts['layout'] = 'blank';
+	if ( !has_action( 'add_loop_layout_' . $args['layout'] ) )
+		$args['layout'] = 'blank';
 
 	//* Add columns classes. This is how our defaults are styled, so add a custom class if style is set to none
 	if ( $style == 'none' ) {

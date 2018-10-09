@@ -1,51 +1,17 @@
-$mobile-width-section: 767px;
-$tablet-width-section: 768px;
-$desktop-width-section: 1200px;
-
-@mixin mobile {
-	 @media (max-width: #{$mobile-width-section}){
-		@content;
-	}
-}
-
-@mixin tablet {
-	 @media (min-width: #{$tablet-width-section}) and (max-width: #{$desktop-width-section - 1px}){
-		@content;
-	}
-}
-
-@mixin mobileandtablet {
-	 @media (max-width: #{$desktop-width-section - 1px}){
-		@content;
-	}
-}
-
-@mixin desktop {
-	 @media (min-width: #{$desktop-width-section}){
-		@content;
-	}
-}
-
-@mixin notmobile {
-	 @media (min-width: #{$tablet-width-section}){
-		@content;
-	}
-}
-
 /* ==========================================================================
    Alignment
    ========================================================================== */
 
 .loop-container-align-left {
-	text-align: left;
+    text-align: left;
 }
 
 .loop-container-align-right {
-	text-align: right;
+    text-align: right;
 }
 
 .loop-container-align-center {
-	text-align: center;
+    text-align: center;
 }
 
 /* ==========================================================================
@@ -53,40 +19,51 @@ $desktop-width-section: 1200px;
    ========================================================================== */
 
 .loop-container {
-	padding-top: 35px;
-	margin-bottom: 35px;
+    padding-top: 20px;
+    margin-bottom: 35px;
 
-	.entry {
-		margin: 0;
-		padding: 0;
-		padding: 10px;
-		background-color: #efefef;
-	}
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .entry {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+    }
+
+    h3 {
+        text-transform: none;
+        margin-bottom: 10px;
+        font-size: 24px;
+        letter-spacing: 0;
+    }
+
+    p {
+        font-size: 16px;
+    }
 }
 
 .widget {
-	.loop-container {
-		padding: 0;
-		margin: 0;
-	}
+    .loop-container {
+        padding: 0;
+        margin: 0;
+    }
 }
 
 .custom-loop-container {
-	.entry {
-		margin: 0;
-		padding: 0;
-		padding: 10px;
-		background-color: #efefef;
-	}
+    .entry {
+        margin: 0;
+        padding: 0;
+    }
 }
-
 
 /* ==========================================================================
    Columns
    ========================================================================== */
 
 .loop-item-inner {
-	// silence is golden
+    // silence is golden
 }
 
 .loop-columns-one-line,
@@ -97,99 +74,100 @@ $desktop-width-section: 1200px;
 .loop-columns-4,
 .loop-columns-5,
 .loop-columns-6 {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: center;
-	align-items: stretch;
-	align-content: stretch;
-	margin-left: -5px;
-	margin-right: -5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    margin-left: -10px;
+    margin-right: -10px;
 
-	.entry {
-		flex: 0 1 auto;
-		margin: 0 5px 10px;
-	}
+    .entry {
+        flex: 0 1 auto;
+        margin: 0 10px 20px;
+    }
 }
 
 .loop-columns-one-line {
-	flex-flow: row nowrap;
-	justify-content: space-around;
+    flex-flow: row nowrap;
+    justify-content: space-around;
 
-	.entry {
-		width: 100%;
-	}
+    .entry {
+        width: 100%;
+    }
 }
 
 .loop-columns-auto {
-	.entry {
-
-	}
+    .entry {}
 }
 
 .loop-columns-1 {
-	.entry {
-		width: 100%;
-	}
+    .entry {
+        width: 100%;
+    }
 }
 
 .loop-columns-2 {
-	.entry {
-		width: calc( 50% - 10px );
+    .entry {
+        width: calc( 100% / 2 - 20px );
 
-		@include mobile {
-			width: calc( 100% - 10px );
-		}
-	}
+        @include mobile {
+            width: calc( 100% - 20px );
+        }
+    }
 }
 
 .loop-columns-3 {
-	.entry {
-		width: calc( 33.3% - 10px );
+    .entry {
+        width: calc( 100% / 3 - 20px );
 
-		@include mobile {
-			width: calc( 100% - 10px );
-		}
-	}
+        @include mobile {
+            width: calc( 100% - 20px );
+        }
+    }
 }
 
 .loop-columns-4 {
-	.entry {
-		width: calc( 25% - 10px );
+    .entry {
+        width: calc( 100% / 4 - 20px );
 
-		@include tablet {
-			width: calc( 50% - 10px );
-		}
+        @include tablet {
+            width: calc( 100% / 2 - 20px );
+        }
 
-		@include mobile {
-			width: calc( 50% - 10px );
-		}
-	}
+
+        @include mobile {
+            width: calc( 100% / 2 - 20px );
+        }
+    }
 }
 
 .loop-columns-5 {
-	.entry {
-		width: calc( 20% - 10px );
+    .entry {
+        width: calc( 100% / 5 - 20px );
 
-		@include tablet {
-			width: calc( 33.3% - 10px );
-		}
+        @include tablet {
+            width: calc( 100% / 3 - 20px );
+        }
 
-		@include mobile {
-			width: calc( 50% - 10px );
-		}
-	}
+
+        @include mobile {
+            width: calc( 100% / 2 - 20px );
+        }
+    }
 }
 
 .loop-columns-6 {
-	.entry {
-		width: calc( 16.6% - 10px );
+    .entry {
+        width: calc( 100% / 6 - 20px );
 
-		@include tablet {
-			width: calc( 33.3% - 10px );
-		}
+        @include tablet {
+            width: calc( 100% / 3 - 20px );
+        }
 
-		@include mobile {
-			width: calc( 50% - 10px );
-		}
-	}
+
+        @include mobile {
+            width: calc( 100% / 2 - 20px );
+        }
+    }
 }
