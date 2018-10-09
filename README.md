@@ -4,8 +4,8 @@ This loop plugin has one piece of functionality I've found to be missing in most
 
 ## Table of contents
 
-* Registering a layout
-* Sample shortcodes
+* [Registering a layout](#registering-a-layout)
+* [Sample shortcodes](#sample-shortcodes)
 
 ## Registering a layout
 
