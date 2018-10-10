@@ -2,12 +2,12 @@
 
 /*
 	Plugin Name: Simple Query Shortcodes
-	Plugin URI: https://elod.in
-	Description: Just another simple query shortcode plugin.
-	Version: 1.0
+	Plugin URI: https://github.com/jonschr/simple-query-shortcodes
+    GitHub Plugin URI: https://github.com/jonschr/simple-query-shortcodes
+    Description: Just another simple query shortcode plugin.
+    Version: 1.0.1
     Author: Jon Schroeder
     Author URI: https://elod.in
-    GitHub Plugin URI: https://github.com/jonschr/simple-query-shortcodes
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
