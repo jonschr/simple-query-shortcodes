@@ -7,6 +7,7 @@
 	Version: 0.9
     Author: Jon Schroeder
     Author URI: https://elod.in
+    GitHub Plugin URI: https://github.com/jonschr/simple-query-shortcodes
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
