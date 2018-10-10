@@ -4,7 +4,7 @@
 	Plugin Name: Simple Query Shortcodes
 	Plugin URI: https://elod.in
 	Description: Just another simple query shortcode plugin.
-	Version: 0.9
+	Version: 1.0
     Author: Jon Schroeder
     Author URI: https://elod.in
     GitHub Plugin URI: https://github.com/jonschr/simple-query-shortcodes
