@@ -49,5 +49,5 @@ include_once( 'common/debug.php' );
 include_once( 'layouts/blank.php' );
 include_once( 'layouts/default.php' );
 
-//* Shortcode
+//* Main Shortcode
 include_once( 'common/shortcode.php' );
