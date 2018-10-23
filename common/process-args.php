@@ -27,6 +27,7 @@ function gsq_custom_post_type_default_layout( $args ) {
 add_filter( 'gsq_do_args_defaults', 'gsq_default_layout', 7, 1 );
 function gsq_default_layout( $args ) {
 
+	// If there's no layout being set, use 'default' instead
 	if ( !$args['layout'] )
 		$args['layout'] = 'default';	
 
@@ -60,6 +61,7 @@ function gsq_post_terms( $args ) {
 add_filter( 'gsq_do_args_defaults', 'gsq_post_category', 10, 1 );
 function gsq_post_category( $args ) {
 
+	// Bail if we're not on a post
 	if ( $args['post_type'] != 'post' )
 		return $args;
 
