@@ -1,3 +1,7 @@
+#### 1.0.3
+
+- Verifying that our update functionality is operating correclty
+
 #### 1.0.2
 
 - BUGFIX: When a CPT was being used along with a custom layout, the layout wasn't being selected properly. Instead, the plugin was grabbing the layout which corresponds to the name of the CPT (in most cases these will be the same anyway)
