@@ -5,10 +5,16 @@
  */
 add_filter( 'gsq_do_args_defaults', 'gsq_custom_post_type_default_layout', 5, 1 );
 function gsq_custom_post_type_default_layout( $args ) {
+	
+	// Bail if there's already something set, leaving the setting along
+	if ( $args['layout'] )
+		return $args;
 
+	// Bail if we're using the default layout, leaving the setting along (this situation likely will never happen in practice , since the filter which adds 'default' should come later)
 	if ( $args['layout'] == 'default' )
 		return $args;
 
+	// If we're setting a custom content type, let's use that as a default if there's nothing there
 	if ( $args['post_type'] != 'post' )
 		$args['layout'] = $args['post_type'];
 
