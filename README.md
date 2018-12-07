@@ -14,6 +14,12 @@ This loop plugin has one piece of functionality I've found to be missing in most
 
 ## Registering a layout
 
+And here's the killer functionality. You can attach these loops to a layout you register in a theme or plugin. Then use it like so:
+
+```
+[loop post_type="myposttype" layout="mycustomlayout"]
+```
+
 This set of instructions are for theme and plugin authors. If you'd like to add a layout, this is the code to copy and paste. There are two functions in here – the first for adding things *before* the loop starts (scripts and styles, usually), and the second for setting up the markup *within* each post in the loop.
 
 (The first one is commented out because for simple use cases it won't be needed). Usually I add all of the styles in the theme or plugin that's registering the layout to avoid loading unnecessary files.
@@ -64,12 +70,6 @@ For example, these should pull in exactly the same thing:
 [loop category="uncategorized" ]
 [loop terms="uncategorized"]
 [loop taxonomy="categories" terms="uncategorized"]
-```
-
-And here's the killer functionality. You can attach these loops to a layout you register in a theme or plugin (instructions and sample code below). Then use it like so:
-
-```
-[loop post_type="myposttype" layout="mycustomlayout"]
 ```
 
 To pull in a specific number of recent posts, something like this will work:
