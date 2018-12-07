@@ -66,6 +66,12 @@ For example, these should pull in exactly the same thing:
 [loop taxonomy="categories" terms="uncategorized"]
 ```
 
+And here's the killer functionality. You can attach these loops to a layout you register in a theme or plugin (instructions and sample code below). Then use it like so:
+
+```
+[loop post_type="myposttype" layout="mycustomlayout"]
+```
+
 To pull in a specific number of recent posts, something like this will work:
 
 ```
