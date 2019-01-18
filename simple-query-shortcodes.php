@@ -41,6 +41,17 @@ function gsq_enqueue_scripts_styles() {
 
 }
 
+/**
+ * Backend styles and scripts
+ */
+add_action( 'enqueue_block_editor_assets', 'gsq_enqueue_scripts_styles_gutenberg' );
+function gsq_enqueue_scripts_styles_gutenberg() {
+
+    //* Register the main stylesheet
+	wp_enqueue_style( 'gsq-styles', plugin_dir_url( __FILE__ ) . 'css/simple-query.css' );
+
+}
+
 //* Includes
 include_once( 'common/process-args.php' );
 include_once( 'common/basic-loop-hooks.php' );
