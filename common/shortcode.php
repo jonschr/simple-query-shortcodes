@@ -88,7 +88,7 @@ function gsq_add_shortcode( $atts ) {
 		//* Admin notice if there's no layout defined
 		if ( !has_action( 'add_loop_layout_' . $args['layout'] ) && current_user_can( 'edit_posts' ) ) {
 
-			echo '<p class="loop-error"><strong>NOTE:</strong> The specified layout for this <strong>[loop]</strong> shortcode has not been defined. Please attach an action to the <strong>add_loop_layout_' . $args['layout'] . '</strong> hook.</p>';
+			echo '<p class="loop-error"><strong>NOTE:</strong> The specified layout for this <strong>[[loop]]</strong> shortcode has not been defined. Please attach an action to the <strong>add_loop_layout_' . $args['layout'] . '</strong> hook.</p>';
 		}
 
 		do_action( 'gsq_loop_before_while', $args );
