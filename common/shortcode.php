@@ -96,6 +96,7 @@ function gsq_add_shortcode( $atts ) {
 
 		while ( $gsq_shortcode_query->have_posts() ) : $gsq_shortcode_query->the_post();
 
+			do_action( 'gsq_loop_before_entry_' . $args['layout'] . '_' . $current_count );
 			do_action( 'gsq_loop_before_entry_' . $current_count );
 			do_action( 'gsq_loop_before_entry' );
 
@@ -117,6 +118,7 @@ function gsq_add_shortcode( $atts ) {
 
 			do_action( 'gsq_loop_after_entry' );
 			do_action( 'gsq_loop_after_entry_' . $current_count );
+			do_action( 'gsq_loop_after_entry_' . $args['layout'] . '_' . $current_count );
 
 			$current_count++;
 
