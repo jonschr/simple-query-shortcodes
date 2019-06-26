@@ -30,6 +30,7 @@ define( 'SIMPLE_QUERY_SHORTCODES', dirname( __FILE__ ) );
 
 //* Enqueue Scripts and Styles
 add_action( 'wp_enqueue_scripts', 'gsq_enqueue_scripts_styles' );
+add_action( 'enqueue_block_assets', 'gsq_enqueue_scripts_styles' );
 function gsq_enqueue_scripts_styles() {
 
     //* Don't add these scripts and styles to the admin side of the site
@@ -44,11 +45,11 @@ function gsq_enqueue_scripts_styles() {
 /**
  * Backend styles and scripts
  */
-add_action( 'enqueue_block_editor_assets', 'gsq_enqueue_scripts_styles_gutenberg' );
+// add_action( 'enqueue_block_editor_assets', 'gsq_enqueue_scripts_styles_gutenberg' );
 function gsq_enqueue_scripts_styles_gutenberg() {
 
     //* Register the main stylesheet
-	wp_enqueue_style( 'gsq-styles', plugin_dir_url( __FILE__ ) . 'css/simple-query.css' );
+	wp_register_style( 'gsq-styles', '/css/simple-query.css' );
 
 }
 
