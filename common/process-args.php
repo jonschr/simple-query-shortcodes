@@ -37,9 +37,9 @@ function gsq_default_layout( $args ) {
 /**
  * 'Post' post type category defaults when terms are set
  */
-add_filter( 'gsq_do_args_defaults', 'gsq_post_terms', 10, 1 );
+add_filter( 'gsq_do_args_defaults', 'gsq_post_terms', 9, 1 );
 function gsq_post_terms( $args ) {
-
+	
 	if ( $args['post_type'] != 'post' )
 		return $args;
 
@@ -102,7 +102,7 @@ function gsq_autodetect_cpt_terms( $args ) {
 		$args['terms'] = $args['category'];
 
 		// Reset the category
-		$args['category'] = null;
+		unset( $args['category'] );
 
 	}
 
@@ -128,10 +128,40 @@ function gsq_autodetect_cpt_terms( $args ) {
 	);
 	
 	//* So that they don't mess anything up down the line, reset the values of the things we've used
-	$args['taxonomy'] = null;
-	$args['field'] = null;
-	$args['terms'] = null;
-	$args['operator'] = null;
+	unset( $args['taxonomy'] );
+	unset( $args['field'] );
+	unset( $args['terms'] );
+	unset( $args['operator'] );
+
+	$args = wp_parse_args( $args, $tax_args );
+
+	return $args;
+}
+
+add_filter( 'gsq_do_args_defaults', 'gsq_custom_tax_queries', 12, 1 );
+function gsq_custom_tax_queries( $args ) {
+
+	//* Bail if either the term or the tax isn't set
+	if ( !$args['terms'] || !$args['taxonomy'] )
+		return $args;
+		
+	//* Set up the taxonomy query
+	$tax_args = array(
+		'tax_query' => array(
+			array(
+				'taxonomy' => $args['taxonomy'],
+				'field'    => $args['field'],
+				'terms'    => $args['terms'],
+				'operator' => $args['operator']
+			),
+		),
+	);
+
+	//* So that they don't mess anything up down the line, reset the values of the things we've used
+	unset( $args['taxonomy'] );
+	unset( $args['field'] );
+	unset( $args['terms'] );
+	unset( $args['operator'] );
 
 	$args = wp_parse_args( $args, $tax_args );
 

@@ -1,3 +1,6 @@
+#### 1.1.1
+- BUGFIX: Queries where the post type has multiple taxonomies weren't pulling correctly
+
 #### 1.0.3
 
 - Verifying that our update functionality is operating correclty
