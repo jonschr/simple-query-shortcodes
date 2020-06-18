@@ -140,9 +140,13 @@ function gsq_autodetect_cpt_terms( $args ) {
 
 add_filter( 'gsq_do_args_defaults', 'gsq_custom_tax_queries', 12, 1 );
 function gsq_custom_tax_queries( $args ) {
-
-	//* Bail if either the term or the tax isn't set
-	if ( !$args['terms'] || !$args['taxonomy'] )
+	
+	//* Bail if the terms aren't set
+	if ( !isset( $args['terms'] ) )
+		return $args;
+		
+	//* Bail if the tax isn't set
+	if ( !isset( $args['taxonomy'] ) )
 		return $args;
 		
 	//* Set up the taxonomy query
