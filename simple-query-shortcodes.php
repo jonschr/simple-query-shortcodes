@@ -65,3 +65,14 @@ include_once( 'layouts/default.php' );
 
 //* Main Shortcode
 include_once( 'common/shortcode.php' );
+
+//* Updater
+require 'vendor/plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/jonschr/simple-query-shortcodes',
+	__FILE__,
+	'simple-query-shortcodes'
+);
+
+// Optional: Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
