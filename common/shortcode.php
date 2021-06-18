@@ -102,8 +102,18 @@ function gsq_add_shortcode( $atts ) {
 
 			global $post;
 			$post_id = get_the_ID();
+			
+			$initial_classes = array();
+			
+			if ( has_post_thumbnail( $post_id ) )
+				$initial_classes[] = 'has-post-thumbnail';
+				
+			$initial_classes = implode( ' ', $initial_classes );
 
 			$classes = implode( ' ', get_post_class('entry') );
+			$classes = $classes . ' ' . $initial_classes;
+			
+			
 			printf( '<article class="%s">', $classes );
 
 				echo '<div class="loop-item-inner">';

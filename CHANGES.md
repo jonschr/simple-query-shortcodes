@@ -1,3 +1,6 @@
+### 1.3
+* Adding 'has-post-thumbnail' class to posts
+
 ### 1.2
 * Update capabilities added natively
 * BUGFIX: Fixed isset() notices when term or taxonomy (but not both at the same time) were used
