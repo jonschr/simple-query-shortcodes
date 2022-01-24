@@ -31,6 +31,7 @@ function gsq_add_shortcode( $atts ) {
 		'class' 			=> null,
 		'style' 			=> null,
 		'connected_type' 	=> null,
+		'exclude_current'	=> null,
 	), $atts );
 
 	//* Let's do any processing of the arguments we need to do

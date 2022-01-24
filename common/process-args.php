@@ -35,6 +35,20 @@ function gsq_default_layout( $args ) {
 }
 
 /**
+ * Exclude the current post
+ */
+add_filter( 'gsq_do_args_defaults', 'gsq_exclude_current', 8, 1 );
+function gsq_exclude_current( $args ) {
+		
+	if ( $args['exclude_current'] != 'true' )
+		return $args;
+				
+	$args['post__not_in'] = array( get_the_ID() );
+	
+	return $args;
+}
+
+/**
  * 'Post' post type category defaults when terms are set
  */
 add_filter( 'gsq_do_args_defaults', 'gsq_post_terms', 9, 1 );

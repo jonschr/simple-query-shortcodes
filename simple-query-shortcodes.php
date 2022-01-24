@@ -5,7 +5,7 @@
 	Plugin URI: https://github.com/jonschr/simple-query-shortcodes
     GitHub Plugin URI: https://github.com/jonschr/simple-query-shortcodes
     Description: Just another simple query shortcode plugin.
-    Version: 1.3
+    Version: 1.4
     Author: Jon Schroeder
     Author URI: https://elod.in
 
@@ -27,7 +27,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 //* Plugin directory and version
 define( 'SIMPLE_QUERY_SHORTCODES', dirname( __FILE__ ) );
-define( 'SIMPLE_QUERY_SHORTCODES_VERSION', '1.3' );
+define( 'SIMPLE_QUERY_SHORTCODES_VERSION', '1.4' );
 
 //* Enqueue Scripts and Styles
 add_action( 'wp_enqueue_scripts', 'gsq_enqueue_scripts_styles' );
