@@ -1,3 +1,5 @@
+### 1.4.1
+* Whoops. Didn't actually publish changes in 1.4.
 ### 1.4
 * Adding 'exclude_current' parameter. When set to true, it adds 'post__not_in = array( get_the_ID() )' to the query parameters, excluding the current post.
 ### 1.3
