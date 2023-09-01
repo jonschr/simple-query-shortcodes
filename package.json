@@ -1,0 +1,24 @@
+{
+  "name": "simple-query-shortcodes",
+  "version": "1.0.0",
+  "description": "This loop plugin has one piece of functionality I've found to be missing in most of the commercial plugins that do similar things: it allows for custom layouts to be registered by themes or plugins, then assigned to a loop pulling in a particular subset of posts.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://jonschr@github.com/jonschr/simple-query-shortcodes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonschr/simple-query-shortcodes/issues"
+  },
+  "homepage": "https://github.com/jonschr/simple-query-shortcodes#readme",
+  "devDependencies": {
+    "gulp-clean-css": "^4.3.0",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-sourcemaps": "^3.0.0"
+  }
+}
