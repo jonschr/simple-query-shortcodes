@@ -5,6 +5,9 @@
  */
 add_shortcode( 'loop', 'gsq_add_shortcode' );
 function gsq_add_shortcode( $atts ) {
+	
+	global $post;
+	$current_id = get_the_ID();
 
 	wp_enqueue_style( 'gsq-styles' );
 
@@ -114,6 +117,8 @@ function gsq_add_shortcode( $atts ) {
 			$classes = implode( ' ', get_post_class('entry') );
 			$classes = $classes . ' ' . $initial_classes;
 			
+			if ( $post_id == $current_id )
+				$classes = $classes . ' ' . 'current-post';
 			
 			printf( '<article class="%s">', $classes );
 

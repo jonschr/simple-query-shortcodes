@@ -1,3 +1,7 @@
+### 1.6
+
+-   Add functionality to detect whether we're on the post (for formating purposes)
+
 ### 1.5
 
 -   Removing CodeKit
