@@ -1,0 +1,15 @@
+/* ==========================================================================
+   Alignment
+   ========================================================================== */
+
+.loop-container-align-left {
+	text-align: left;
+}
+
+.loop-container-align-right {
+	text-align: right;
+}
+
+.loop-container-align-center {
+	text-align: center;
+}

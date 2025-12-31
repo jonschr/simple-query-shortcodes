@@ -1,0 +1,20 @@
+/* ==========================================================================
+   Admin Notices / Errors
+   ========================================================================== */
+
+.loop-error {
+	display: inline-block;
+	width: auto;
+	text-align: left;
+	font-size: 16px;
+	padding: 10px 20px;
+	background-color: rgba(255, 0, 0, 0.07);
+	border: 1px solid rgba(255, 0, 0, 0.1);
+	border-top: 3px solid rgb(255, 0, 0);
+	border-radius: 3px;
+	margin: 40px 0 0;
+
+	strong {
+		color: red;
+	}
+}

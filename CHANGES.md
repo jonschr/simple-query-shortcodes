@@ -1,3 +1,7 @@
+### 1.7
+
+-   Refactoring to use native css only to avoid the compile step.
+
 ### 1.6
 
 -   Add functionality to detect whether we're on the post (for formating purposes)
